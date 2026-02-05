@@ -1,11 +1,14 @@
-import { createContext, useState, type Dispatch, type SetStateAction } from "react";
+import { createContext, useEffect, useState, type Dispatch, type SetStateAction } from "react";
+import colors from '../../colors.json'
+
+type ColorsFields = typeof colors.dark
 
 interface IContextProps{
     children: React.ReactNode,
 }
 
 interface IContextValues{
-    isDark: boolean,
+    currentColors: ColorsFields,
     currentUser: string,
     setCurrentUser: Dispatch<SetStateAction<string>>
     changeTheme: () => void
@@ -17,9 +20,14 @@ const Context = ({children}: IContextProps) =>{
     const [isDark, setDark] = useState(true)
     const [currentUser, setCurrentUser] = useState('')
     const changeTheme = (): void => {setDark(!isDark)}
+    const currentColors: ColorsFields = isDark ? colors.dark : colors.light
+
+    useEffect(()=>{
+        document.body.style.backgroundColor = currentColors.document
+    },[currentColors])
 
     const contextValues: IContextValues = {
-        isDark,
+        currentColors,
         currentUser,
         setCurrentUser,
         changeTheme
