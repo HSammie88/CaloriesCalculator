@@ -17,7 +17,7 @@ interface IContextValues{
 const ContextProvider = createContext<IContextValues | undefined>(undefined)
 
 const Context = ({children}: IContextProps) =>{
-    const [isDark, setDark] = useState(true)
+    const [isDark, setDark] = useState(false)
     const [currentUser, setCurrentUser] = useState('')
     const changeTheme = (): void => {setDark(!isDark)}
     const currentColors: ColorsFields = isDark ? colors.dark : colors.light
