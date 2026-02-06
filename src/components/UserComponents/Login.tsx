@@ -1,6 +1,7 @@
 import { LogIn } from "lucide-react";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ContextProvider } from "../Context/Context";
+import { UserQueries } from "../../DBQueries";
 
 export default function Login() {
   const { currentColors, setCurrentUser } = useContext(ContextProvider)!;
@@ -23,7 +24,18 @@ export default function Login() {
     if (loginRef.current && pwdRef.current) {
       if (!loginRef.current.value || !pwdRef.current.value) {
         setError("Empty fields!");
-      } else setCurrentUser(loginRef.current.value);
+        return;
+      }
+      const foundUser = UserQueries.getOneUser(loginRef.current.value);
+      if ("errorMessage" in foundUser) {
+        setError("Wrong credentials");
+        return;
+      }
+      if (foundUser.password !== pwdRef.current.value) {
+        setError("Wrong credentials");
+        return;
+      }
+      setCurrentUser(foundUser.login);
     }
   };
 

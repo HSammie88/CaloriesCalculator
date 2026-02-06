@@ -1,1 +1,2 @@
-export * from './componentStyle'
+export * from "./food";
+export * from "./user";
