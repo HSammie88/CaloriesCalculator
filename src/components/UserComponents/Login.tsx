@@ -28,7 +28,7 @@ export default function Login() {
       }
       const foundUser = UserQueries.getOneUser(loginRef.current.value);
       if ("errorMessage" in foundUser) {
-        setError("Wrong credentials");
+        setError(foundUser.errorMessage);
         return;
       }
       if (foundUser.password !== pwdRef.current.value) {
@@ -58,6 +58,7 @@ export default function Login() {
         <input
           placeholder="Login"
           maxLength={15}
+          onKeyDown={e => e.key === "Enter" ? handleLogin() : null }
           style={inputStyle}
           ref={loginRef}
           type="text"
@@ -65,6 +66,7 @@ export default function Login() {
         <input
           placeholder="Password"
           maxLength={30}
+          onKeyDown={e => e.key === "Enter" ? handleLogin() : null }
           style={inputStyle}
           ref={pwdRef}
           type="password"

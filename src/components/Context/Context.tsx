@@ -24,7 +24,7 @@ interface IContextValues {
 const ContextProvider = createContext<IContextValues | undefined>(undefined);
 
 const Context = ({ children }: IContextProps) => {
-  const [isDark, setDark] = useState(false);
+  const [isDark, setDark] = useState(true);
   const [currentUser, setCurrentUser] = useState("");
   const changeTheme = (): void => {
     setDark(!isDark);
@@ -42,6 +42,7 @@ const Context = ({ children }: IContextProps) => {
       name: "admin",
       role: "Administrator",
       foodList: [],
+      isActive: true,
     });
 
   useEffect(() => {

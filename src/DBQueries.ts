@@ -30,7 +30,7 @@ export const UserQueries: IUserQueries = {
     const foundUser: IUser | undefined = userList.find(
       (user) => user.login === newUser.login
     );
-    if (foundUser) return { errorID: 105, errorMessage: "User is existed" };
+    if (foundUser) return { errorID: 105, errorMessage: "User is existing" };
     else {
       localStorage.setItem("users", JSON.stringify([...userList, newUser]));
     }
@@ -42,6 +42,7 @@ export const UserQueries: IUserQueries = {
       (user) => user.login === login
     );
     if (!foundUser) return { errorID: 104, errorMessage: "User not found" };
+    if (!foundUser.isActive) return { errorID: 404, errorMessage: "User was deleted"}
     return foundUser;
   },
 

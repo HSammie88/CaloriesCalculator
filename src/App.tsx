@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import Layout from './components/Layout/Layout'
 import ErrorPage from './pages/ErrorPage/ErrorPage'
+import MainPage from './pages/MainPage/MainPage'
 
 const router = createBrowserRouter([
     {
@@ -11,7 +12,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <></>
+                element: <MainPage/>
             }
         ]
     }

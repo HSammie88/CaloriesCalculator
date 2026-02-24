@@ -7,4 +7,5 @@ export interface IUser {
   name: string;
   role: string;
   foodList: IFood[];
+  isActive: boolean;
 }
