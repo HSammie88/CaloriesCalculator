@@ -1,0 +1,33 @@
+.container{
+    width: 90%;
+    min-height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+}
+
+.user_card{
+    width: 250px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px gray;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    background-color: var(--bg-color);
+    transition: background-color .3s, scale .3s;
+    padding: 10px;
+
+    &:hover{
+        background-color: var(--hover-color);
+        scale: 1.05;
+    }
+
+    & h3{
+        font-size: 20px;
+    }
+}

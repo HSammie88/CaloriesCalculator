@@ -3,6 +3,8 @@ import './App.css'
 import Layout from './components/Layout/Layout'
 import ErrorPage from './pages/ErrorPage/ErrorPage'
 import MainPage from './pages/MainPage/MainPage'
+import UserList from './pages/UserList/UserList'
+import ProtectedRoute from './components/ProtectedRoute'
 
 const router = createBrowserRouter([
     {
@@ -13,6 +15,15 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <MainPage/>
+            },
+            {
+                element: <ProtectedRoute/>,
+                children: [
+                    {
+                        path: 'userList',
+                        element: <UserList/>
+                    }
+                ]
             }
         ]
     }

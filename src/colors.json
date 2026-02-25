@@ -6,7 +6,8 @@
     "text": "#ff6b6b",
     "button": "#ff9b9b",
     "footer": "#0a0a0a",
-    "card": "#242424"
+    "card": "#242424",
+    "cardHover": "#363636"
   },
   "light": {
     "document": "#f1f3f5",
@@ -15,6 +16,7 @@
     "text": "#c92a2a",
     "button": "#ff8787",
     "footer": "#e9ecef",
-    "card": "#ffffff"
+    "card": "#ffffff",
+    "cardHover": "#dedcdc"
   }
 }
