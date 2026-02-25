@@ -16,6 +16,7 @@ export default function NotLogged({
   const loginRef = useRef<HTMLInputElement>(null);
   const pwdRef = useRef<HTMLInputElement>(null);
   const [errorText, setError] = useState("");
+  const pwdRegex = /^(?=.*[A-Za-z])(?=.*\d).{7,}$/;
 
   const handleRegister = () => {
     if (nameRef.current && loginRef.current && pwdRef.current) {
@@ -25,6 +26,10 @@ export default function NotLogged({
         !pwdRef.current.value
       ) {
         setError("Missing fields!");
+        return;
+      }
+      if (!pwdRegex.test(pwdRef.current.value)) {
+        setError("This password is not secure");
         return;
       }
       const addedUser = UserQueries.add({

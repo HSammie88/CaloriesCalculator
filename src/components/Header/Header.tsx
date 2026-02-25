@@ -4,10 +4,12 @@ import { ContextProvider } from "../Context/Context";
 import NavigationLink from "../NavigationLink/NavigationLink";
 import Login from "../UserComponents/Login";
 import User from "../UserComponents/User";
+import { UserQueries } from "../../DBQueries";
 
 export default function Header() {
   const { currentColors, currentUser, setCurrentUser } =
     useContext(ContextProvider)!;
+    const fullCurrentUser = UserQueries.getOneUser(currentUser)
 
   const styleContainer: React.CSSProperties & {
     [key: `--${string}`]: string | number;
@@ -23,10 +25,11 @@ export default function Header() {
         <NavigationLink destination="/" text="Main Page" />
         <NavigationLink destination="/addFood" text="Add Food" />
         <NavigationLink destination="/foodList" text="Food List" />
+        {!("errorMessage" in fullCurrentUser) && fullCurrentUser.role === "Administrator" ? <NavigationLink destination="/userList" text="All Users"/> : null}
       </nav>
       <div className={style["user-container"]}>
-        {currentUser ? (
-          <User currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        {"name" in fullCurrentUser ? (
+          <User currentUser={fullCurrentUser.name} setCurrentUser={setCurrentUser} />
         ) : (
           <Login />
         )}
