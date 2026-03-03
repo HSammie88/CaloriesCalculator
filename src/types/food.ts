@@ -3,6 +3,15 @@ export interface IFood {
   foodName: string;
   calories: number;
   weight: number;
-  isCustom: boolean;
   date: string;
+}
+
+export interface IDish{
+  id: number;
+  ingredients: {
+    food: IFood;
+    amount: number;
+  }[];
+  date: string;
+  calories: number;
 }

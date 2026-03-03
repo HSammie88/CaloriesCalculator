@@ -1,4 +1,4 @@
-import { type IFood } from "./index.ts";
+import { type IDish} from "./index.ts";
 
 export interface IUser {
   id: number;
@@ -6,6 +6,6 @@ export interface IUser {
   password: string;
   name: string;
   role: string;
-  foodList: IFood[];
+  foodList: IDish[];
   isActive: boolean;
 }

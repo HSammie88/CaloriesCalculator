@@ -1,0 +1,38 @@
+.container{
+    width: 80%;
+    min-height: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+}
+
+.buttonContainer{
+    width: 40%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
+    
+    & .addBtn{
+        width: 40%;
+        height: 100%;
+        border-radius: 10px;
+        box-shadow: 0 0 10px gray;
+        cursor: pointer;
+        transition: scale .3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover{
+            scale: 1.05;
+        }
+
+        & h2{
+            font-size: 30px;
+        }
+    }
+}

@@ -5,6 +5,7 @@ import ErrorPage from './pages/ErrorPage/ErrorPage'
 import MainPage from './pages/MainPage/MainPage'
 import UserList from './pages/UserList/UserList'
 import ProtectedRoute from './components/ProtectedRoute'
+import AddFood from './pages/AddFood/AddFood'
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
                     {
                         path: 'userList',
                         element: <UserList/>
+                    },
+                    {
+                        path: 'addFood',
+                        element: <AddFood/>
                     }
                 ]
             }

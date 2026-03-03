@@ -1,19 +1,22 @@
-import { type IUser, type IFood } from "./types/index";
+import { type IDish, type IFood, type IUser} from "./types/index";
 
 interface IQueryError {
   errorID: number;
   errorMessage: string;
 }
 
-interface IFoodQueries {
-  add: (food: IFood, currentUser: string) => void;
-  get: (currentUser: string) => IFood[] | IQueryError;
-  update: (
-    id: number,
-    newFood: Partial<IFood>,
-    currentUser: string
-  ) => void | IQueryError;
-  delete: (id: number, currentUser: string) => void | IQueryError;
+interface IFoodQueries{
+  add: (food: IFood) => void | IQueryError;
+  get: () => IFood[];
+  update: (name: string) => void | IQueryError;
+  delete: (name: string) => void | IQueryError;
+}
+
+interface IDishQueries{
+  add: (dish: IDish) => void | IQueryError;
+  get: (login: string) => IDish[];
+  update: (login: string, dishID: Partial<IDish>) => void | IQueryError;
+  delete: (login: string, dishID: number) => void | IQueryError;
 }
 
 interface IUserQueries {
